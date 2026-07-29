@@ -158,7 +158,8 @@ dotnet run
 
 ### AI Recommendation
 
-(Add Screenshot)
+<img width="347" height="355" alt="image" src="https://github.com/user-attachments/assets/0ae78a46-e7b0-48e4-b3dd-aa23206333cc" />
+
 
 ---
 
