@@ -1,4 +1,4 @@
-﻿# 🏨 Smart Hotel Reservation System
+<img width="686" height="371" alt="image" src="https://github.com/user-attachments/assets/81871955-6a91-4e01-b4a4-fa571b89bb9f" />﻿# 🏨 Smart Hotel Reservation System
 
 A modern Hotel Reservation & Management System developed using **ASP.NET Core MVC**. The application provides a complete hotel booking experience with secure authentication, AI-powered room recommendations, and an administrative management dashboard.
 
@@ -136,19 +136,24 @@ dotnet run
 
 ### Home Page
 
-(Add Screenshot)
+<img width="830" height="403" alt="Screenshot 2026-07-29 121321" src="https://github.com/user-attachments/assets/47a49465-0b91-4277-a6b3-f47b6ed8bfa7" />
+
+
 
 ### Rooms
 
-(Add Screenshot)
+<img width="686" height="411" alt="Screenshot 2026-07-29 121337" src="https://github.com/user-attachments/assets/d7cff5a7-c53c-4656-84c1-91c85292a6fd" />
+
 
 ### Booking
 
-(Add Screenshot)
+<img width="813" height="386" alt="Screenshot 2026-07-29 121412" src="https://github.com/user-attachments/assets/2fc4963e-a7b4-4a8d-92d1-d90aae4b9fe2" />
+
 
 ### Dashboard
 
-(Add Screenshot)
+![Uploading Screenshot 2026-07-29 121428.png…]()
+
 
 ### AI Recommendation
 
