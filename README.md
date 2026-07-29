@@ -152,7 +152,8 @@ dotnet run
 
 ### Dashboard
 
-![Uploading Screenshot 2026-07-29 121428.png…]()
+<img width="686" height="371" alt="Screenshot 2026-07-29 121428" src="https://github.com/user-attachments/assets/0a527e95-55b1-43a5-b754-579c5c33fa96" />
+
 
 
 ### AI Recommendation
