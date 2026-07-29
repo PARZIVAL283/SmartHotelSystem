@@ -1,0 +1,201 @@
+﻿@using SmartHotelSystem.Models
+
+@{
+    ViewData["Title"] = "Admin Dashboard";
+}
+
+<div class="container-fluid py-4">
+
+    <div class="mb-4">
+
+        <h2 class="fw-bold">
+
+            <i class="bi bi-speedometer2 text-primary"></i>
+
+            Admin Dashboard
+
+        </h2>
+
+        <p class="text-muted">
+
+            Welcome back! Here's an overview of your hotel.
+
+        </p>
+
+    </div>
+
+    <div class="row g-4">
+
+        <div class="col-lg-3 col-md-6">
+
+            <div class="card dashboard-card bg-primary text-white">
+
+                <div class="card-body">
+
+                    <i class="bi bi-door-open-fill dashboard-icon"></i>
+
+                    <h6>Total Rooms</h6>
+
+                    <h2>@ViewBag.TotalRooms</h2>
+
+                </div>
+
+            </div>
+
+        </div>
+
+        <div class="col-lg-3 col-md-6">
+
+            <div class="card dashboard-card bg-success text-white">
+
+                <div class="card-body">
+
+                    <i class="bi bi-check-circle-fill dashboard-icon"></i>
+
+                    <h6>Available Rooms</h6>
+
+                    <h2>@ViewBag.AvailableRooms</h2>
+
+                </div>
+
+            </div>
+
+        </div>
+
+        <div class="col-lg-3 col-md-6">
+
+            <div class="card dashboard-card bg-warning text-dark">
+
+                <div class="card-body">
+
+                    <i class="bi bi-calendar-event-fill dashboard-icon"></i>
+
+                    <h6>Total Bookings</h6>
+
+                    <h2>@ViewBag.TotalBookings</h2>
+
+                </div>
+
+            </div>
+
+        </div>
+
+        <div class="col-lg-3 col-md-6">
+
+            <div class="card dashboard-card bg-dark text-white">
+
+                <div class="card-body">
+
+                    <i class="bi bi-cash-stack dashboard-icon"></i>
+
+                    <h6>Total Revenue</h6>
+
+                    <h2>৳ @String.Format("{0:N0}", ViewBag.TotalRevenue)</h2>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+    <div class="row mt-5">
+
+        <div class="col-lg-12">
+
+            <div class="card shadow border-0">
+
+                <div class="card-header bg-primary text-white">
+
+                    <h5 class="mb-0">
+
+                        Recent Bookings
+
+                    </h5>
+
+                </div>
+
+                <div class="table-responsive">
+
+                    <table class="table table-hover align-middle mb-0">
+
+                        <thead class="table-light">
+
+                            <tr>
+
+                                <th>Customer</th>
+
+                                <th>Room</th>
+
+                                <th>Check In</th>
+
+                                <th>Check Out</th>
+
+                                <th>Status</th>
+
+                                <th>Total</th>
+
+                            </tr>
+
+                        </thead>
+
+                        <tbody>
+
+                            @foreach (var booking in ViewBag.RecentBookings)
+                            {
+                                <tr>
+
+                                    <td>@booking.User.UserName</td>
+
+                                    <td>@booking.Room.RoomNumber</td>
+
+                                    <td>@booking.CheckInDate.ToShortDateString()</td>
+
+                                    <td>@booking.CheckOutDate.ToShortDateString()</td>
+
+                                    <td>
+
+                                        @if (booking.Status == BookingStatus.Pending)
+                                        {
+                                            <span class="badge bg-warning text-dark">
+                                                Pending
+                                            </span>
+                                        }
+                                        else if (booking.Status == BookingStatus.Confirmed)
+                                        {
+                                            <span class="badge bg-success">
+                                                Confirmed
+                                            </span>
+                                        }
+                                        else
+                                        {
+                                            <span class="badge bg-danger">
+                                                Cancelled
+                                            </span>
+                                        }
+
+                                    </td>
+
+                                    <td>
+
+                                        ৳ @booking.TotalPrice
+
+                                    </td>
+
+                                </tr>
+                            }
+
+                        </tbody>
+
+                    </table>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</div>

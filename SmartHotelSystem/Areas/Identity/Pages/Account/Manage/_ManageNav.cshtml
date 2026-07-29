@@ -1,0 +1,34 @@
+@using Microsoft.AspNetCore.Identity
+@inject SignInManager<ApplicationUser> SignInManager
+
+<ul class="nav flex-column account-menu">
+
+    <li class="nav-item">
+        <a class="nav-link" asp-page="./Index">
+            <i class="bi bi-person-fill"></i>
+            Profile
+        </a>
+    </li>
+
+    <li class="nav-item">
+        <a class="nav-link" asp-page="./Email">
+            <i class="bi bi-envelope-fill"></i>
+            Email
+        </a>
+    </li>
+
+    <li class="nav-item">
+        <a class="nav-link" asp-page="./ChangePassword">
+            <i class="bi bi-lock-fill"></i>
+            Password
+        </a>
+    </li>
+
+    <li class="nav-item">
+        <a class="nav-link" asp-page="./PersonalData">
+            <i class="bi bi-shield-lock-fill"></i>
+            Personal Data
+        </a>
+    </li>
+
+</ul>

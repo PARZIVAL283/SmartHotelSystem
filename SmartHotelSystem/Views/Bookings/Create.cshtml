@@ -1,0 +1,122 @@
+@model SmartHotelSystem.Models.Booking
+
+@{
+    ViewData["Title"] = "Book Room";
+}
+
+<div class="container">
+
+    <div class="row justify-content-center">
+
+        <div class="col-lg-7">
+
+            <div class="card shadow-lg border-0">
+
+                <div class="card-header bg-primary text-white text-center py-4">
+
+                    <h2>
+                        <i class="bi bi-calendar-check-fill"></i>
+                        Book Your Room
+                    </h2>
+
+                    <p class="mb-0">
+                        Complete your reservation in a few seconds.
+                    </p>
+
+                </div>
+
+                <div class="card-body p-4">
+
+                    <form asp-action="Create">
+
+                        <div asp-validation-summary="ModelOnly" class="alert alert-danger"></div>
+
+                        <div class="mb-4">
+
+                            <label asp-for="RoomId" class="form-label fw-bold"></label>
+
+                            <select asp-for="RoomId"
+                                    class="form-select"
+                                    asp-items="ViewBag.RoomId">
+
+                                <option value="">Select a Room</option>
+
+                            </select>
+
+                            <span asp-validation-for="RoomId" class="text-danger"></span>
+
+                        </div>
+
+                        <div class="row">
+
+                            <div class="col-md-6">
+
+                                <div class="mb-4">
+
+                                    <label asp-for="CheckInDate" class="form-label fw-bold"></label>
+
+                                    <input asp-for="CheckInDate"
+                                           type="date"
+                                           class="form-control" />
+
+                                    <span asp-validation-for="CheckInDate" class="text-danger"></span>
+
+                                </div>
+
+                            </div>
+
+                            <div class="col-md-6">
+
+                                <div class="mb-4">
+
+                                    <label asp-for="CheckOutDate" class="form-label fw-bold"></label>
+
+                                    <input asp-for="CheckOutDate"
+                                           type="date"
+                                           class="form-control" />
+
+                                    <span asp-validation-for="CheckOutDate" class="text-danger"></span>
+
+                                </div>
+
+                            </div>
+
+                        </div>
+
+                        <div class="d-grid gap-2">
+
+                            <button class="btn btn-success btn-lg">
+
+                                <i class="bi bi-check-circle-fill"></i>
+
+                                Confirm Booking
+
+                            </button>
+
+                            <a asp-controller="Rooms"
+                               asp-action="Index"
+                               class="btn btn-outline-secondary">
+
+                                Cancel
+
+                            </a>
+
+                        </div>
+
+                    </form>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}

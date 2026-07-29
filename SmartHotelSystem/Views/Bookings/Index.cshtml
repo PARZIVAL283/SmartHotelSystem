@@ -1,0 +1,142 @@
+@model IEnumerable<SmartHotelSystem.Models.Booking>
+
+@{
+    ViewData["Title"] = "My Bookings";
+}
+
+<div class="container">
+
+    <div class="d-flex justify-content-between align-items-center mb-4">
+
+        <div>
+            <h2 class="fw-bold">
+                <i class="bi bi-calendar-check-fill"></i>
+                My Bookings
+            </h2>
+
+            <p class="text-muted">
+                View all your hotel reservations.
+            </p>
+        </div>
+
+        <a asp-controller="Rooms"
+           asp-action="Index"
+           class="btn btn-primary">
+
+            <i class="bi bi-plus-circle"></i>
+            Book Another Room
+
+        </a>
+
+    </div>
+
+    @if (!Model.Any())
+    {
+        <div class="alert alert-info">
+
+            <h5>No bookings found.</h5>
+
+            <p class="mb-0">
+                Start by booking your first room.
+            </p>
+
+        </div>
+    }
+    else
+    {
+        <div class="row">
+
+            @foreach (var booking in Model)
+            {
+                <div class="col-lg-6 mb-4">
+
+                    <div class="card booking-card h-100">
+
+                        <div class="row g-0">
+
+                            <div class="col-md-4">
+
+                                @if (!string.IsNullOrEmpty(booking.Room?.ImageUrl))
+                                {
+                                    <img src="@booking.Room.ImageUrl"
+                                         class="img-fluid h-100 w-100 booking-image"
+                                         alt="Room">
+                                }
+                                else
+                                {
+                                    <img src="/images/no-image.png"
+                                         class="img-fluid h-100 w-100 booking-image"
+                                         alt="Room">
+                                }
+
+                            </div>
+
+                            <div class="col-md-8">
+
+                                <div class="card-body">
+
+                                    <h5 class="fw-bold">
+                                        Room @booking.Room?.RoomNumber
+                                    </h5>
+
+                                    <p class="text-primary">
+                                        @booking.Room?.Category
+                                    </p>
+
+                                    <hr />
+
+                                    <p>
+                                        <strong>Check-In:</strong>
+                                        @booking.CheckInDate.ToString("dd MMM yyyy")
+                                    </p>
+
+                                    <p>
+                                        <strong>Check-Out:</strong>
+                                        @booking.CheckOutDate.ToString("dd MMM yyyy")
+                                    </p>
+
+                                    <p>
+                                        <strong>Total:</strong>
+                                        $@booking.TotalPrice
+                                    </p>
+
+                                    <p>
+
+                                        <strong>Status:</strong>
+
+                                        @if (booking.Status == BookingStatus.Pending)
+                                        {
+                                            <span class="badge bg-warning text-dark">
+                                                Pending
+                                            </span>
+                                        }
+                                        else if (booking.Status == BookingStatus.Confirmed)
+                                        {
+                                            <span class="badge bg-success">
+                                                Confirmed
+                                            </span>
+                                        }
+                                        else
+                                        {
+                                            <span class="badge bg-danger">
+                                                Cancelled
+                                            </span>
+                                        }
+
+                                    </p>
+
+                                </div>
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                </div>
+            }
+
+        </div>
+    }
+
+</div>

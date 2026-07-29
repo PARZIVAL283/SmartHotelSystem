@@ -1,0 +1,215 @@
+﻿@{
+    ViewData["Title"] = "Reports";
+}
+
+<div class="container-fluid py-4">
+
+    <div class="mb-4">
+        <h2 class="fw-bold">
+            <i class="bi bi-bar-chart-line-fill text-primary"></i>
+            Hotel Analytics Dashboard
+        </h2>
+
+        <p class="text-muted">
+            Overview of bookings, rooms and hotel revenue.
+        </p>
+    </div>
+
+    <div class="row g-4">
+
+        <div class="col-lg-3 col-md-6">
+            <div class="card dashboard-card border-0 bg-primary text-white">
+                <div class="card-body">
+                    <i class="bi bi-door-open-fill dashboard-icon"></i>
+                    <h6>Total Rooms</h6>
+                    <h2>@ViewBag.TotalRooms</h2>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-lg-3 col-md-6">
+            <div class="card dashboard-card border-0 bg-success text-white">
+                <div class="card-body">
+                    <i class="bi bi-calendar-check-fill dashboard-icon"></i>
+                    <h6>Total Bookings</h6>
+                    <h2>@ViewBag.TotalBookings</h2>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-lg-3 col-md-6">
+            <div class="card dashboard-card border-0 bg-warning text-dark">
+                <div class="card-body">
+                    <i class="bi bi-person-fill-check dashboard-icon"></i>
+                    <h6>Confirmed</h6>
+                    <h2>@ViewBag.ConfirmedBookings</h2>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-lg-3 col-md-6">
+            <div class="card dashboard-card border-0 bg-danger text-white">
+                <div class="card-body">
+                    <i class="bi bi-x-circle-fill dashboard-icon"></i>
+                    <h6>Cancelled</h6>
+                    <h2>@ViewBag.CancelledBookings</h2>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <div class="row g-4 mt-2">
+
+        <div class="col-lg-4">
+
+            <div class="card dashboard-card border-0 bg-info text-white">
+
+                <div class="card-body">
+
+                    <i class="bi bi-clock-history dashboard-icon"></i>
+
+                    <h6>Pending Bookings</h6>
+
+                    <h2>@ViewBag.PendingBookings</h2>
+
+                </div>
+
+            </div>
+
+        </div>
+
+        <div class="col-lg-4">
+
+            <div class="card dashboard-card border-0 bg-dark text-white">
+
+                <div class="card-body">
+
+                    <i class="bi bi-cash-stack dashboard-icon"></i>
+
+                    <h6>Total Revenue</h6>
+
+                    <h2>৳ @String.Format("{0:N0}", ViewBag.TotalRevenue)</h2>
+
+                </div>
+
+            </div>
+
+        </div>
+
+        <div class="col-lg-4">
+
+            <div class="card dashboard-card border-0 bg-secondary text-white">
+
+                <div class="card-body">
+
+                    <i class="bi bi-people-fill dashboard-icon"></i>
+
+                    <h6>Total Customers</h6>
+
+                    <h2>@ViewBag.TotalCustomers</h2>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+    <div class="row mt-5">
+
+        <div class="col-lg-6">
+
+            <div class="card shadow-lg border-0">
+
+                <div class="card-header bg-primary text-white">
+
+                    <h5 class="mb-0">
+                        Booking Status
+                    </h5>
+
+                </div>
+
+                <div class="card-body">
+
+                    <p class="mb-2">
+                        Confirmed
+                    </p>
+
+                    <div class="progress mb-3" style="height:10px;">
+                        <div class="progress-bar bg-success"
+                             style="width:@(ViewBag.TotalBookings == 0 ? 0 : (ViewBag.ConfirmedBookings * 100 / ViewBag.TotalBookings))%">
+                        </div>
+                    </div>
+
+                    <p class="mb-2">
+                        Pending
+                    </p>
+
+                    <div class="progress mb-3" style="height:10px;">
+                        <div class="progress-bar bg-warning"
+                             style="width:@(ViewBag.TotalBookings == 0 ? 0 : (ViewBag.PendingBookings * 100 / ViewBag.TotalBookings))%">
+                        </div>
+                    </div>
+
+                    <p class="mb-2">
+                        Cancelled
+                    </p>
+
+                    <div class="progress" style="height:10px;">
+                        <div class="progress-bar bg-danger"
+                             style="width:@(ViewBag.TotalBookings == 0 ? 0 : (ViewBag.CancelledBookings * 100 / ViewBag.TotalBookings))%">
+                        </div>
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+        <div class="col-lg-6">
+
+            <div class="card shadow-lg border-0 h-100">
+
+                <div class="card-header bg-success text-white">
+
+                    <h5 class="mb-0">
+
+                        ⭐ Most Popular Room
+
+                    </h5>
+
+                </div>
+
+                <div class="card-body d-flex flex-column justify-content-center text-center">
+
+                    <i class="bi bi-door-open-fill text-success"
+                       style="font-size:70px;"></i>
+
+                    <h2 class="mt-3">
+
+                        Room @ViewBag.MostBookedRoom
+
+                    </h2>
+
+                    <p class="text-muted">
+
+                        This room has been booked
+
+                        <strong>@ViewBag.BookingCount</strong>
+
+                        times.
+
+                    </p>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
